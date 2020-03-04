@@ -1,0 +1,109 @@
+.wcon-wrapper {
+    color: #000;
+    font-size: 13px;
+    /*!px*/
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+
+    // 解决浏览器兼容性
+    min-height: 0px!important;
+}
+
+.wcon-switch {
+    position: fixed;
+    z-index: 9999;
+    height: 40px;
+    width: 80px;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.3);
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    &-txt {
+        color: #FFF;
+        font-size: 14px;
+        /*!px*/
+    }
+    &_on {
+        background-color: rgba(0,0,0,0.7);
+    }
+}
+.wcon-nonetouch{
+    touch-action: none;
+}
+
+.wcon-mask {
+    position: fixed;
+    // top: 0;
+    height: 999px;
+    left: 0;
+    right: 0;
+    bottom: 999px;
+    background-color: rgba(0, 0, 0, 0.6);
+    // iOS上设置transform会影响悬挂按钮相对定位，暂时去掉动画效果，后面找更好的方法
+    // transition-property: transform;
+    // transition-duration: 300;
+    // transform: translateY(667px); //浏览器端
+    // transition: transform .3s;
+    // FIXME:安卓不支持opacity不显示，所以隐去原本渐显动画，改为从底部划出,此处应该有更好的解决方案
+    // opacity: 0;
+    // transition-property: opacity;
+    // transition-duration: 300; //浏览器端
+    // transition: opacity .3s;
+    // display: none;
+}
+
+// .wcon-mask-active {
+//     opacity: 1; //浏览器端
+//     display: block;
+// }
+.wcon-mask-active {
+    bottom: 0;
+    // transform: translateY(0);
+}
+
+.wcon-panel {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 999px;
+    height: 530px;
+    z-index: 9998;
+    background-color: #EFEFF4;
+    // transition-property: transform;
+    // transition-duration: 300;
+    // transform: translateY(530px); //浏览器端
+    // transition: transform .3s;
+}
+
+.wcon-panel-active {
+    bottom: 0;
+    // transform: translateY(0);
+
+}
+
+.wcon-tabbar {
+    // border-bottom: 1px solid #D9D9D9;
+    // display: flex;
+    height: 40px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    &-item {
+        height: 38px;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-left: 5px;
+        padding-right: 5px;
+        // border-right-width: 1px;
+        // border-right-color: #d9d9d9;
+    }
+    &-txt {
+        text-align: center;
+        width: 60px;
+        height: 22px;
+        font-size: 15px;/*!px*/
+    }
+}
