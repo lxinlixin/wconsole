@@ -8,7 +8,7 @@ const weexCSS = require('postcss-weex');
 const ExtractText = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoPrefixer = require('autoprefixer');
-const px2rem = require('@u51/postcss-px2rem');
+const px2rem = require('postcss-px2rem');
 const pkg = require('../package.json');
 const pxEditor = require('postcss-px-editor');
 
@@ -117,8 +117,7 @@ function getBaseConfig(platform) {
                 {
                     test: /\.js$/,
                     loader: 'babel-loader',
-                    exclude: /node_modules\/(?!(@u51\/)?(wee(k|x)-ui|wconsole))/,
-                    // exclude: /node_modules\/(?!(@u51\/)?wconsole/,
+                    exclude: /node_modules\/(?!(wee(k|x)-ui|wconsole))/,
                 },
                 {
                     test: /\.(png|jpe?g|gif|svg|ttf)(\?.*)?$/,
@@ -175,8 +174,7 @@ function getBaseConfig(platform) {
                     {
                         test: /\.vue$/,
                         loader: 'vue-loader',
-                        // exclude: /node_modules\/(?!(@u51\/)?wee(k|x)-ui)/,
-                        exclude: /node_modules\/(?!(@u51\/)?(wee(k|x)-ui|wconsole))/,
+                        exclude: /node_modules\/(?!(wee(k|x)-ui|wconsole))/,
                         options: {
                             compilerModules: [{
                                 postTransformNode(el) {
@@ -217,7 +215,7 @@ function getBaseConfig(platform) {
                                 pxEditor((px, opt) => {
                                     if (Math.abs(px) > 1) {
                                             const file = opt.decl.source.input.file;
-                                            if (file && /node_modules\/@u51\/[week-ui|wconsole]/.test(file)) {
+                                            if (file && /node_modules\/[week-ui|wconsole]/.test(file)) {
                                                 return px * 2;
                                             }
                                         }
@@ -242,7 +240,7 @@ function getBaseConfig(platform) {
                     {
                         test: /\.css$/,
                         oneOf: [{
-                            include: /@u51\/weex-vue-polyfill/,
+                            include: /weex-vue-render/,
                             loader: (isProduction ? [] : ['css-hot-loader']).concat(ExtractText.extract({
                                 fallback: 'style-loader',
                                 allChunks: true,
@@ -264,8 +262,7 @@ function getBaseConfig(platform) {
         },
         resolve: {
             alias: {
-                '@u51/pg': '@u51/weex-pg',
-                axios: '@u51/weex-axios',
+                axios: 'weex-axios',
             },
         },
         module: {
@@ -273,7 +270,7 @@ function getBaseConfig(platform) {
                 {
                     test: /\.vue$/,
                     loader: 'weex-vue-loader',
-                    exclude: /node_modules\/(?!(@u51\/)?(wee(k|x)-ui|wconsole))/,
+                    exclude: /node_modules\/(?!(wee(k|x)-ui|wconsole))/,
                     options: {
                         // 这里配置 Weex Native 的样式处理
                         postcss: [
@@ -281,7 +278,7 @@ function getBaseConfig(platform) {
                             pxEditor((px, opt) => {
                                 if (Math.abs(px) > 1) {
                                         const file = opt.decl.source.input.file;
-                                        if (file && /node_modules\/@u51\/[week-ui|wconsole]/.test(file)) {
+                                        if (file && /node_modules\/[week-ui|wconsole]/.test(file)) {
                                             return px * 2;
                                         }
                                     }

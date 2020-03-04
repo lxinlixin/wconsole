@@ -54,9 +54,11 @@
     "node-sass": "^4.6.1",
     "postcss": "^6.0.14",
     "postcss-loader": "^2.0.10",
+    "postcss-px2rem": "^0.3.0",
     "postcss-weex": "^1.0.5",
     "rimraf": "^2.6.0",
     "sass-loader": "^6.0.7",
+    "script-attr-html-webpack-plugin": "^1.0.1",
     "style-loader": "^0.19.0",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^0.5.8",
@@ -69,7 +71,8 @@
     "webpack-hot-middleware": "^2.21.2",
     "webpack-merge": "^4.1.0",
     "weex-bindingx": "^0.0",
-    "weex-vue-loader": "0.5.0-beta.3"
+    "weex-vue-loader": "0.5.0-beta.3",
+    "weex-vue-render": "^1.0.36"
   },
   "husky": {
     "hooks": {
@@ -80,5 +83,9 @@
     "commitizen": {
       "path": "./node_modules/cz-customizable"
     }
+  },
+  "dependencies": {
+    "weex-axios": "^0.16.4",
+    "weex-service": "0.0.4"
   }
 }

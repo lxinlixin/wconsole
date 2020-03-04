@@ -1,4 +1,4 @@
-import * as service from '@u51/weex-service';
+import * as service from 'weex-service';
 import './components/wconsole/index.js';
 
 const routes = [];

@@ -8,7 +8,7 @@ const weexCSS = require('postcss-weex');
 const ExtractText = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoPrefixer = require('autoprefixer');
-const px2rem = require('@u51/postcss-px2rem');
+const px2rem = require('postcss-px2rem');
 const pkg = require('../package.json');
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -17,9 +17,9 @@ const isProduction = process.env.NODE_ENV === 'production';
 const IS_FLEXIBLE = true;
 
 // 打包时的 output.publicPath
-const BUILD_PUBLIC_PATH = isProduction ?
-    '//h5.u51.com/web.u51.com/storage/'.concat(pkg.name.replace('@u51/', ''), '/')
-    : '/';
+// const BUILD_PUBLIC_PATH = isProduction ?
+//     '//h5.u51.com/web.u51.com/storage/'.concat(pkg.name, '/')
+//     : '/';
 
 function resolve(dir) {
     return path.join(__dirname, '../', dir);
@@ -84,7 +84,8 @@ function getBaseConfig(platform) {
         entry: configEntries,
         output: {
             path: resolve('build'),
-            publicPath: isProduction ? BUILD_PUBLIC_PATH : '/',
+            // publicPath: isProduction ? BUILD_PUBLIC_PATH : '/',
+            publicPath: '/',
         },
         resolve: {
             extensions: ['.js', '.vue', '.json'],
@@ -109,8 +110,7 @@ function getBaseConfig(platform) {
                 {
                     test: /\.js$/,
                     loader: 'babel-loader',
-                    // exclude: /node_modules\/(?!@u51\/week-ui)/,
-                    exclude: /node_modules\/(?!@u51\/[week-ui|wconsole])/,
+                    exclude: /node_modules\/(?!\/[week-ui|wconsole])/,
                 },
                 {
                     test: /\.(png|jpe?g|gif|svg|ttf)(\?.*)?$/,
@@ -176,8 +176,7 @@ function getBaseConfig(platform) {
                     {
                         test: /\.vue$/,
                         loader: 'vue-loader',
-                        // exclude: /node_modules\/(?!@u51\/week-ui)/,
-                        exclude: /node_modules\/(?!@u51\/[week-ui|wconsole])/,
+                        exclude: /node_modules\/(?!\/[week-ui|wconsole])/,
                         options: {
                             compilerModules: [{
                                 postTransformNode(el) {
@@ -233,7 +232,7 @@ function getBaseConfig(platform) {
                     {
                         test: /\.css$/,
                         oneOf: [{
-                            include: /@u51\/weex-vue-polyfill/,
+                            include: /weex-vue-render/,
                             loader: (isProduction ? [] : ['css-hot-loader']).concat(ExtractText.extract({
                                 fallback: 'style-loader',
                                 allChunks: true,
@@ -255,8 +254,7 @@ function getBaseConfig(platform) {
         },
         resolve: {
             alias: {
-                '@u51/pg': '@u51/weex-pg',
-                axios: '@u51/weex-axios',
+                axios: 'weex-axios',
             },
         },
         module: {
@@ -264,8 +262,7 @@ function getBaseConfig(platform) {
                 {
                     test: /\.vue$/,
                     loader: 'weex-vue-loader',
-                    // exclude: /node_modules\/(?!@u51\/week-ui)/,
-                    exclude: /node_modules\/(?!@u51\/[week-ui|wconsole])/,
+                    exclude: /node_modules\/(?!\/[week-ui|wconsole])/,
                     options: {
                         // 这里配置 Weex Native 的样式处理
                         postcss: [

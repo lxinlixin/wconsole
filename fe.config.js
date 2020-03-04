@@ -3,8 +3,8 @@ module.exports = {
     "description": "创建公司 Weex 工程项目",
     "version": "2.2",
     "engine": "2.0",
-    "author": "徐浩洋",
-    "email": "xuhaoyang@u51.com",
+    "author": "李欣",
+    "email": "lx602608953@163.com",
     "marks": {
         ".babelrc": "5894b60a",
         ".editorconfig": "bd0a69f3",

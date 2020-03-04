@@ -2,7 +2,7 @@
 const webpack = require('webpack');
 const UglifyPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const ScriptAttrPlugin = require('@u51/script-attr-html-webpack-plugin');
+const ScriptAttrPlugin = require('script-attr-html-webpack-plugin');
 
 const [webBaseConfig, nativeBaseConfig] = require('./webpack.base');
 
@@ -17,7 +17,7 @@ const uglifyPlugin = new UglifyPlugin(({
 webBaseConfig.output.crossOriginLoading = 'anonymous';
 webBaseConfig.plugins.unshift(
     new ScriptAttrPlugin({
-        chunks: [/\/\/h5.u51.com\//i],
+        chunks: [/\/\/wconsole\//i],
         attributes: { crossorigin: 'anonymous' },
     }),
     new webpack.HashedModuleIdsPlugin(),

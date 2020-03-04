@@ -21,13 +21,13 @@
 4. 增加ajax请求的拦截（需求是否旺盛）
 
 ### 使用方法
-step1. 安装 nbm install --save @u51/wconsole
+step1. 安装 nbm install --save wconsole
 
 step2. 在entry.js中引入即可(版本>=1.1.0)
 
 ```js
-import * as service from '@u51/weex-service';
-import '@u51/wconsole';//引入
+import * as service from 'weex-service';
+import 'wconsole';//引入
 
 const routes = [];
 
@@ -42,16 +42,16 @@ step3. 修改webpack.base.js配置，由于wconsole采用源码引入的方式�
 
 ```
 // 找到下述字段：
-// 在exclude中添加@u51/wconsole路径，
-// 在下面这种情况下可以修改为： exclude: /node_modules\/(?!(@u51\/)?(wee(k|x)-ui|wconsole))/,
+// 在exclude中添加wconsole路径，
+// 在下面这种情况下可以修改为： exclude: /node_modules\/(?!(wee(k|x)-ui|wconsole))/,
 test: /\.vue$/,
 loader: 'vue-loader',
-exclude: /node_modules\/(?!@u51\/week-ui)/,
+exclude: /node_modules\/(?!\/week-ui)/,
 
-// 同样，将exclude修改为: exclude: /node_modules\/(?!(@u51\/)?(wee(k|x)-ui|wconsole))/,
+// 同样，将exclude修改为: exclude: /node_modules\/(?!(?(wee(k|x)-ui|wconsole))/,
 test: /\.vue$/,
 loader: 'weex-vue-loader',
-exclude: /node_modules\/(?!@u51\/week-ui)/,
+exclude: /node_modules\/(?!\/week-ui)/,
 ```
 
 ### 常见的可能的问题
