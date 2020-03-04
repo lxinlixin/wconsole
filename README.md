@@ -63,7 +63,7 @@ exclude: /node_modules\/(?!\/week-ui)/,
 
 ### 源码调试方法
 对wconsole有兴趣的同学可以参照下面的方式进行本地调试，没有问题的话欢迎issues哈
-1. git clone git@git.51.nb:maxiaobo/wconsole.git
+1. git clone git@github.com:lxinlixin/wconsole.git
 2. nbm i
 3. nbm run dev
 4. wconsole本质上是一个vue组件，并对全局的console进行了重写，核心代码在entry以及src/components/wconsole中
