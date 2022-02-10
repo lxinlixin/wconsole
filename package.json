@@ -51,7 +51,7 @@
     "husky": "^3.1.0",
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
-    "node-sass": "^4.6.1",
+    "node-sass": "^7.0.0",
     "postcss": "^6.0.14",
     "postcss-loader": "^2.0.10",
     "postcss-px2rem": "^0.3.0",
